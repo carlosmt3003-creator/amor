@@ -1,0 +1,575 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #120914;
+  --surface: rgba(255, 255, 255, 0.045);
+  --pink: #ff79b9;
+  --pink-light: #ffc1df;
+  --purple: #bd8aff;
+  --text: #fff5fa;
+  --muted: #c0aabf;
+  --border: rgba(255, 179, 218, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse at 50% 5%, #39152f 0%, transparent 43%),
+    radial-gradient(ellipse at 0% 60%, #21102d 0%, transparent 45%),
+    var(--bg);
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+}
+
+button {
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--pink-light);
+  outline-offset: 5px;
+}
+
+.background-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(
+    circle at 50% 45%,
+    rgba(193, 64, 142, 0.08),
+    transparent 55%
+  );
+  animation: glow 7s ease-in-out infinite alternate;
+}
+
+.topbar {
+  width: min(100% - 36px, 900px);
+  margin: auto;
+  padding: 25px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.logo span {
+  color: var(--pink);
+}
+
+.love-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background: #ff79b9;
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--pink);
+  animation: pulse 1.8s infinite;
+}
+
+.hero {
+  min-height: 680px;
+  padding: 70px 22px 85px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.eyebrow,
+.section-label {
+  color: var(--pink);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.4px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: fadeDown 1s both;
+}
+
+.small-message {
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 13px;
+  animation: fadeUp 0.9s 0.15s both;
+}
+
+h1,
+h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -1.5px;
+}
+
+h1 {
+  margin-top: 15px;
+  font-size: clamp(42px, 10vw, 76px);
+  line-height: 1.12;
+  animation: fadeUp 1s 0.25s both;
+}
+
+h1 span,
+h2 span {
+  color: var(--pink);
+  font-style: italic;
+}
+
+.hero-description {
+  max-width: 330px;
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+  animation: fadeUp 1s 0.4s both;
+}
+
+.heart-orbit {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  margin: 28px 0 18px;
+  display: grid;
+  place-items: center;
+}
+
+.main-heart {
+  color: var(--pink);
+  font-size: 74px;
+  text-shadow:
+    0 0 18px rgba(255, 121, 185, 0.8),
+    0 0 50px rgba(255, 77, 161, 0.35);
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.orbit {
+  position: absolute;
+  border: 1px solid rgba(255, 121, 185, 0.25);
+  border-radius: 50%;
+  animation: rotate 12s linear infinite;
+}
+
+.orbit-one {
+  width: 140px;
+  height: 140px;
+}
+
+.orbit-two {
+  width: 180px;
+  height: 180px;
+  border-color: rgba(189, 138, 255, 0.2);
+  animation-direction: reverse;
+  animation-duration: 18s;
+}
+
+.orbit-heart {
+  position: absolute;
+  color: var(--pink-light);
+  filter: drop-shadow(0 0 7px var(--pink));
+}
+
+.heart-one {
+  top: 16px;
+  left: 35px;
+  animation: float 3s infinite ease-in-out;
+}
+
+.heart-two {
+  right: 13px;
+  bottom: 48px;
+  color: var(--purple);
+  animation: float 4s 0.5s infinite ease-in-out;
+}
+
+.heart-three {
+  bottom: 14px;
+  left: 50px;
+  font-size: 11px;
+  animation: float 3.5s 0.9s infinite ease-in-out;
+}
+
+.primary-button,
+.secondary-button,
+.letter-button {
+  min-height: 54px;
+  padding: 0 23px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  color: white;
+  background: linear-gradient(110deg, #e84e9c, #9b54cf);
+  box-shadow: 0 8px 30px rgba(220, 63, 152, 0.2);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.primary-button {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.primary-button:hover,
+.secondary-button:hover,
+.letter-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(220, 63, 152, 0.35);
+}
+
+.button-heart {
+  animation: heartbeat 1.2s infinite;
+}
+
+.tap-hint {
+  margin-top: 14px;
+  color: #9e849c;
+  font-size: 10px;
+}
+
+.love-card,
+.surprise-section,
+.final-section {
+  width: min(100% - 36px, 540px);
+  margin: 0 auto 85px;
+  text-align: center;
+}
+
+.love-card {
+  padding: 34px 26px;
+  border: 1px solid var(--border);
+  border-radius: 25px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.015)
+  );
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+  margin: 19px 0;
+  font-size: clamp(30px, 7vw, 42px);
+  line-height: 1.25;
+}
+
+.love-card p,
+.final-section > p:not(.section-label),
+.letter-intro {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 2;
+}
+
+.highlight-text {
+  margin-top: 17px;
+}
+
+.signature {
+  margin-top: 25px;
+  color: var(--pink-light);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 19px;
+  font-style: italic;
+}
+
+.signature span {
+  color: var(--pink);
+}
+
+.surprise-section {
+  padding: 38px 24px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.letter-decoration {
+  margin-bottom: 20px;
+  color: var(--pink);
+  font-size: 44px;
+  animation: float 3s infinite ease-in-out;
+}
+
+.letter-button {
+  margin-top: 26px;
+  background: rgba(255, 121, 185, 0.1);
+  border-color: rgba(255, 121, 185, 0.4);
+  color: var(--pink-light);
+  box-shadow: none;
+}
+
+.letter-button span {
+  margin-right: 8px;
+}
+
+.letter {
+  margin-top: 28px;
+  padding: 27px 23px;
+  border: 1px solid rgba(255, 178, 216, 0.28);
+  border-radius: 18px;
+  background: linear-gradient(145deg, #29172b, #1c1121);
+  text-align: left;
+  animation: letterOpen 0.7s ease both;
+}
+
+.letter[hidden] {
+  display: none;
+}
+
+.letter-top {
+  margin-bottom: 24px;
+  color: var(--pink);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.letter p {
+  margin-bottom: 17px;
+  color: #ead9e7;
+  font-size: 13px;
+  line-height: 2;
+}
+
+.letter .letter-ending {
+  color: var(--pink-light);
+  font-weight: 600;
+}
+
+.letter .letter-signature {
+  margin: 25px 0 0;
+  color: var(--pink);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 18px;
+  font-style: italic;
+  text-align: right;
+}
+
+.final-section {
+  padding: 10px 5px;
+}
+
+.final-heart {
+  margin-bottom: 20px;
+  color: var(--pink);
+  font-size: 43px;
+  animation: heartbeat 1.5s infinite;
+  filter: drop-shadow(0 0 18px rgba(255, 121, 185, 0.5));
+}
+
+.final-section > p:not(.section-label) {
+  max-width: 350px;
+  margin: auto;
+}
+
+.secondary-button {
+  margin-top: 25px;
+  background: rgba(255, 121, 185, 0.08);
+  border-color: var(--border);
+  color: var(--pink-light);
+  box-shadow: none;
+}
+
+footer {
+  padding: 25px 20px 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: #9e849c;
+  font-size: 10px;
+  text-align: center;
+}
+
+.footer-heart {
+  color: var(--pink);
+}
+
+#hearts {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -35px;
+  color: var(--pink);
+  opacity: 0;
+  animation: rise linear forwards;
+  text-shadow: 0 0 12px rgba(255, 121, 185, 0.4);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast {
+  position: fixed;
+  z-index: 20;
+  left: 50%;
+  bottom: 25px;
+  width: max-content;
+  max-width: calc(100% - 32px);
+  padding: 13px 19px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #30182d;
+  color: var(--pink-light);
+  font-size: 12px;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 15px);
+  transition: 0.3s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.14); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.09); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+@keyframes rotate {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  50% { opacity: 0.35; }
+}
+
+@keyframes glow {
+  to { opacity: 0.55; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) rotate(0deg) scale(0.7);
+  }
+  12% { opacity: 0.8; }
+  85% { opacity: 0.6; }
+  100% {
+    opacity: 0;
+    transform: translateY(-110vh) rotate(35deg) scale(1.2);
+  }
+}
+
+@keyframes letterOpen {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (min-width: 700px) {
+  .hero {
+    padding-top: 85px;
+  }
+
+  .love-card {
+    padding: 45px 45px;
+  }
+
+  .letter {
+    padding: 36px;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero {
+    padding-top: 55px;
+  }
+
+  .eyebrow {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .hero-description {
+    font-size: 13px;
+  }
+
+  .love-card {
+    padding: 28px 20px;
+  }
+
+  .primary-button {
+    padding: 0 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
